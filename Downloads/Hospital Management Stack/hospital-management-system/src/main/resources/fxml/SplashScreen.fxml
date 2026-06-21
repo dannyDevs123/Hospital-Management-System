@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<StackPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hospital.controller.SplashScreenController"
+           stylesheets="@../css/style.css"
+           prefWidth="600" prefHeight="400">
+    
+    <VBox styleClass="splash-container" alignment="CENTER" spacing="28">
+        <padding>
+            <Insets top="48" right="48" bottom="48" left="48"/>
+        </padding>
+        
+        <!-- Brand lockup: medical cross badge + typography -->
+        <HBox alignment="CENTER" spacing="16">
+            <StackPane styleClass="splash-logo-badge">
+                <Rectangle width="5" height="20" arcWidth="2" arcHeight="2" fill="#0ea5e9"/>
+                <Rectangle width="20" height="5" arcWidth="2" arcHeight="2" fill="#0ea5e9"/>
+            </StackPane>
+            
+            <VBox alignment="CENTER_LEFT" spacing="4">
+                <Label text="MediCare" styleClass="splash-title">
+                    <font>
+                        <Font name="Segoe UI Bold" size="34"/>
+                    </font>
+                </Label>
+                <Label text="Hospital Management System" styleClass="splash-subtitle"/>
+            </VBox>
+        </HBox>
+        
+        <VBox prefHeight="24"/>
+        
+        <!-- Progress section -->
+        <VBox alignment="CENTER" spacing="10" maxWidth="420">
+            <ProgressBar fx:id="progressBar" progress="0.0" styleClass="splash-progress-bar"/>
+            <Label fx:id="loadingLabel" text="Loading system modules..." styleClass="splash-loading-text"/>
+        </VBox>
+        
+        <Label text="Version 1.0.0" styleClass="splash-version"/>
+    </VBox>
+</StackPane>

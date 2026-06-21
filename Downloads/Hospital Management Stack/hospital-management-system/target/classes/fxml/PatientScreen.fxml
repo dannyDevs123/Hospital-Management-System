@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hospital.controller.PatientController"
+      spacing="20" styleClass="content-area">
+    
+    <!-- Header -->
+    <HBox styleClass="toolbar" alignment="CENTER_LEFT" spacing="15">
+        <Label text="Patient Management" styleClass="toolbar-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField" promptText="Search patients..." 
+                   styleClass="search-box" prefWidth="250"
+                   onKeyReleased="#handleSearch"/>
+        <Button text="Export CSV" styleClass="button, button-secondary" onAction="#exportToCSV"/>
+    </HBox>
+    
+    <!-- Form and Table -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <!-- Form Panel -->
+        <VBox styleClass="form-panel" prefWidth="380" spacing="15">
+            <Label text="Patient Details" styleClass="section-header"/>
+            
+            <GridPane vgap="10" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="110"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <!-- Patient ID -->
+                <Label text="Patient ID:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="patientIdField" editable="false" promptText="Auto-generated"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <!-- Full Name -->
+                <Label text="Full Name:*" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="fullNameField" promptText="Enter full name"
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                
+                <!-- Gender -->
+                <Label text="Gender:*" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="genderCombo" promptText="Select gender"
+                          GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                
+                <!-- Age -->
+                <Label text="Age:*" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="ageField" promptText="Enter age"
+                           GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                
+                <!-- Phone -->
+                <Label text="Phone:*" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="phoneField" promptText="Enter phone number"
+                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                
+                <!-- Blood Group -->
+                <Label text="Blood Group:" styleClass="form-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="bloodGroupCombo" promptText="Select blood group"
+                          GridPane.rowIndex="5" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                
+                <!-- Address -->
+                <Label text="Address:*" styleClass="form-label" GridPane.rowIndex="6" GridPane.columnIndex="0"
+                       GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="5"/>
+                    </GridPane.margin>
+                </Label>
+                <TextArea fx:id="addressField" promptText="Enter address" prefRowCount="3"
+                          GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                
+                <!-- Medical History -->
+                <Label text="Medical History:" styleClass="form-label" GridPane.rowIndex="7" GridPane.columnIndex="0"
+                       GridPane.valignment="TOP">
+                    <GridPane.margin>
+                        <Insets top="5"/>
+                    </GridPane.margin>
+                </Label>
+                <TextArea fx:id="medicalHistoryField" promptText="Enter medical history" prefRowCount="3"
+                          GridPane.rowIndex="7" GridPane.columnIndex="1"/>
+            </GridPane>
+            
+            <!-- Error Label -->
+            <Label fx:id="formErrorLabel" styleClass="error-message" visible="false" managed="false"/>
+            
+            <!-- Buttons -->
+            <HBox spacing="10">
+                <Button fx:id="addButton" text="Add" styleClass="button, button-success" 
+                        onAction="#handleAdd" prefWidth="80"/>
+                <Button fx:id="updateButton" text="Update" styleClass="button, button-primary" 
+                        onAction="#handleUpdate" prefWidth="80"/>
+                <Button fx:id="deleteButton" text="Delete" styleClass="button, button-danger" 
+                        onAction="#handleDelete" prefWidth="80"/>
+                <Button text="Clear" styleClass="button, button-secondary" 
+                        onAction="#handleClear" prefWidth="80"/>
+            </HBox>
+        </VBox>
+        
+        <!-- Table Panel -->
+        <VBox styleClass="form-panel" HBox.hgrow="ALWAYS" spacing="15">
+            <Label text="Patient Records" styleClass="section-header"/>
+            <TableView fx:id="patientTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="ID" fx:id="colPatientId" prefWidth="70"/>
+                    <TableColumn text="Name" fx:id="colName" prefWidth="120"/>
+                    <TableColumn text="Gender" fx:id="colGender" prefWidth="70"/>
+                    <TableColumn text="Age" fx:id="colAge" prefWidth="50"/>
+                    <TableColumn text="Phone" fx:id="colPhone" prefWidth="100"/>
+                    <TableColumn text="Address" fx:id="colAddress" prefWidth="150"/>
+                    <TableColumn text="Blood" fx:id="colBlood" prefWidth="60"/>
+                </columns>
+            </TableView>
+            <Label fx:id="recordCountLabel" text="Total: 0 records" 
+                   style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+        </VBox>
+    </HBox>
+</VBox>

@@ -1,0 +1,315 @@
+/*
+ * MediCare Hospital Management System - Dark Theme Stylesheet
+ */
+
+/* ==================== ROOT & GLOBAL ==================== */
+.root {
+    -fx-background-color: #0f172a;
+}
+
+/* ==================== LOGIN SCREEN ==================== */
+.login-container {
+    -fx-background-color: linear-gradient(to bottom right, #0f172a, #1e293b);
+}
+
+.login-card {
+    -fx-background-color: #1e293b;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.3), 20, 0, 0, 4);
+}
+
+.login-title {
+    -fx-text-fill: #f8fafc;
+}
+
+.login-subtitle {
+    -fx-text-fill: #94a3b8;
+}
+
+/* ==================== TEXT FIELDS & INPUTS ==================== */
+.text-field, .password-field, .text-area, .combo-box, .date-picker {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+    -fx-text-fill: #f1f5f9;
+    -fx-prompt-text-fill: #94a3b8;
+}
+
+.text-field:focused, .password-field:focused, .text-area:focused, 
+.combo-box:focused, .date-picker:focused {
+    -fx-border-color: #3b82f6;
+    -fx-background-color: #475569;
+}
+
+.text-area .content {
+    -fx-background-color: #334155;
+}
+
+/* ==================== COMBO BOX ==================== */
+.combo-box {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+}
+
+.combo-box-popup > .list-view {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #475569;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell {
+    -fx-text-fill: #e2e8f0;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:hover {
+    -fx-background-color: #334155;
+    -fx-text-fill: #60a5fa;
+}
+
+.combo-box-popup > .list-view > .virtual-flow > .clipped-container > .sheet > .list-cell:selected {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+}
+
+/* ==================== BUTTONS ==================== */
+.button-secondary {
+    -fx-background-color: #475569;
+    -fx-text-fill: #e2e8f0;
+}
+
+.button-secondary:hover {
+    -fx-background-color: #64748b;
+}
+
+/* ==================== SIDEBAR ==================== */
+.sidebar {
+    -fx-background-color: #0f172a;
+}
+
+.sidebar-header {
+    -fx-background-color: #020617;
+}
+
+.sidebar-button {
+    -fx-text-fill: #94a3b8;
+}
+
+.sidebar-button:hover {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #e2e8f0;
+}
+
+.sidebar-button.active {
+    -fx-background-color: #2563EB;
+    -fx-text-fill: white;
+}
+
+/* ==================== DASHBOARD CARDS ==================== */
+.dashboard-card {
+    -fx-background-color: #1e293b;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+}
+
+.card-title {
+    -fx-text-fill: #94a3b8;
+}
+
+.card-value {
+    -fx-text-fill: #f8fafc;
+}
+
+/* ==================== CHARTS ==================== */
+.chart-container {
+    -fx-background-color: #1e293b;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+}
+
+.chart-title {
+    -fx-text-fill: #f8fafc;
+}
+
+.bar-chart .axis {
+    -fx-tick-label-fill: #94a3b8;
+}
+
+.bar-chart .axis-label {
+    -fx-text-fill: #cbd5e1;
+}
+
+.line-chart .axis {
+    -fx-tick-label-fill: #94a3b8;
+}
+
+/* ==================== TABLE VIEW ==================== */
+.table-view {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #334155;
+    -fx-table-cell-border-color: #334155;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #0f172a;
+}
+
+.table-view .column-header {
+    -fx-text-fill: #cbd5e1;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #cbd5e1;
+}
+
+.table-view .table-row-cell {
+    -fx-border-color: transparent transparent #334155 transparent;
+}
+
+.table-view .table-row-cell:filled {
+    -fx-background-color: #1e293b;
+}
+
+.table-view .table-row-cell:filled:hover {
+    -fx-background-color: #334155;
+}
+
+.table-view .table-row-cell:selected {
+    -fx-background-color: #1e3a5f;
+}
+
+.table-view .table-row-cell:selected .text {
+    -fx-fill: #f1f5f9;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: #e2e8f0;
+}
+
+/* ==================== NOTIFICATION AREA ==================== */
+.notification-panel {
+    -fx-background-color: #1e293b;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+}
+
+.notification-item {
+    -fx-border-color: transparent transparent #334155 transparent;
+}
+
+.notification-title {
+    -fx-text-fill: #f8fafc;
+}
+
+.notification-time {
+    -fx-text-fill: #64748b;
+}
+
+/* ==================== SECTION HEADERS ==================== */
+.section-header {
+    -fx-text-fill: #f8fafc;
+}
+
+.section-subheader {
+    -fx-text-fill: #94a3b8;
+}
+
+/* ==================== FORM PANEL ==================== */
+.form-panel {
+    -fx-background-color: #1e293b;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.2), 10, 0, 0, 2);
+}
+
+.form-label {
+    -fx-text-fill: #cbd5e1;
+}
+
+/* ==================== SEARCH BOX ==================== */
+.search-box {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+    -fx-text-fill: #f1f5f9;
+}
+
+.search-box:focused {
+    -fx-border-color: #3b82f6;
+    -fx-background-color: #475569;
+}
+
+/* ==================== TOOLBAR ==================== */
+.toolbar {
+    -fx-background-color: #1e293b;
+    -fx-border-color: transparent transparent #334155 transparent;
+}
+
+.toolbar-title {
+    -fx-text-fill: #f8fafc;
+}
+
+/* ==================== CONTENT AREA ==================== */
+.content-area {
+    -fx-background-color: #0f172a;
+}
+
+.main-content {
+    -fx-background-color: #0f172a;
+}
+
+/* ==================== HYPERLINK ==================== */
+.hyperlink {
+    -fx-text-fill: #60a5fa;
+}
+
+.hyperlink:hover {
+    -fx-text-fill: #93c5fd;
+}
+
+/* ==================== TABBED PANE ==================== */
+.tab-pane .tab {
+    -fx-background-color: #334155;
+}
+
+.tab-pane .tab-label {
+    -fx-text-fill: #94a3b8;
+}
+
+/* ==================== SEPARATOR ==================== */
+.separator .line {
+    -fx-border-color: #334155;
+}
+
+/* ==================== PAGINATION ==================== */
+.pagination > .pagination-control > .control-box > .button {
+    -fx-background-color: #334155;
+    -fx-border-color: #475569;
+    -fx-text-fill: #e2e8f0;
+}
+
+.pagination > .pagination-control > .control-box > .button:hover {
+    -fx-background-color: #475569;
+    -fx-border-color: #3b82f6;
+    -fx-text-fill: #60a5fa;
+}
+
+/* ==================== CONTEXT MENU ==================== */
+.context-menu {
+    -fx-background-color: #1e293b;
+    -fx-border-color: #475569;
+}
+
+.context-menu .menu-item {
+    -fx-text-fill: #e2e8f0;
+}
+
+.context-menu .menu-item:hover {
+    -fx-background-color: #334155;
+    -fx-text-fill: #60a5fa;
+}
+
+/* ==================== LIST CELL ==================== */
+.list-cell:filled {
+    -fx-background-color: #1e293b;
+    -fx-text-fill: #e2e8f0;
+}
+
+.list-cell:filled:hover {
+    -fx-background-color: #334155;
+}
+
+/* ==================== ERROR MESSAGE ==================== */
+.error-message {
+    -fx-text-fill: #f87171;
+}

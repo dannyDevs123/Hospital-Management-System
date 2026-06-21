@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hospital.controller.SettingsController"
+      spacing="20" styleClass="content-area">
+    
+    <!-- Header -->
+    <HBox styleClass="toolbar" alignment="CENTER_LEFT" spacing="15">
+        <Label text="Settings" styleClass="toolbar-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+    </HBox>
+    
+    <!-- Settings Tabs -->
+    <TabPane fx:id="settingsTabPane" VBox.vgrow="ALWAYS" style="-fx-background-color: transparent;">
+        
+        <!-- Theme Settings Tab -->
+        <Tab text="Appearance" closable="false">
+            <VBox spacing="20" styleClass="content-area">
+                <VBox styleClass="form-panel" spacing="15" maxWidth="600">
+                    <Label text="Theme Settings" styleClass="section-header"/>
+                    
+                    <GridPane vgap="15" hgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="300"/>
+                        </columnConstraints>
+                        
+                        <Label text="Theme:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <ComboBox fx:id="themeCombo" promptText="Select theme"
+                                  GridPane.rowIndex="0" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                    </GridPane>
+                    
+                    <Label text="Preview: Changes will apply immediately" 
+                           style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+                    
+                    <Button text="Apply Theme" styleClass="button, button-primary" 
+                            onAction="#handleApplyTheme" prefWidth="120"/>
+                </VBox>
+            </VBox>
+        </Tab>
+        
+        <!-- Profile Settings Tab -->
+        <Tab text="Profile" closable="false">
+            <VBox spacing="20" styleClass="content-area">
+                <VBox styleClass="form-panel" spacing="15" maxWidth="600">
+                    <Label text="User Profile" styleClass="section-header"/>
+                    
+                    <GridPane vgap="12" hgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="120"/>
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="300"/>
+                        </columnConstraints>
+                        
+                        <Label text="Username:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <TextField fx:id="usernameField" editable="false"
+                                   GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Full Name:" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <TextField fx:id="fullNameField" promptText="Enter your full name"
+                                   GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Email:" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <TextField fx:id="emailField" promptText="Enter your email"
+                                   GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    
+                    <Label fx:id="profileMessageLabel" visible="false" managed="false"
+                           style="-fx-text-fill: #22C55E; -fx-font-size: 12px;"/>
+                    
+                    <Button text="Save Profile" styleClass="button, button-primary" 
+                            onAction="#handleSaveProfile" prefWidth="120"/>
+                </VBox>
+            </VBox>
+        </Tab>
+        
+        <!-- Password Settings Tab -->
+        <Tab text="Security" closable="false">
+            <VBox spacing="20" styleClass="content-area">
+                <VBox styleClass="form-panel" spacing="15" maxWidth="600">
+                    <Label text="Change Password" styleClass="section-header"/>
+                    
+                    <GridPane vgap="12" hgap="15">
+                        <columnConstraints>
+                            <ColumnConstraints prefWidth="150"/>
+                            <ColumnConstraints hgrow="ALWAYS" maxWidth="300"/>
+                        </columnConstraints>
+                        
+                        <Label text="Current Password:*" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                        <PasswordField fx:id="currentPasswordField" promptText="Enter current password"
+                                       GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                        
+                        <Label text="New Password:*" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                        <PasswordField fx:id="newPasswordField" promptText="Enter new password"
+                                       GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                        
+                        <Label text="Confirm Password:*" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                        <PasswordField fx:id="confirmPasswordField" promptText="Confirm new password"
+                                       GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                    </GridPane>
+                    
+                    <!-- Password Requirements -->
+                    <VBox style="-fx-background-color: #f8fafc; -fx-background-radius: 8px; -fx-padding: 10px;" spacing="4">
+                        <Label text="Password Requirements:" 
+                               style="-fx-font-weight: bold; -fx-text-fill: #475569; -fx-font-size: 11px;"/>
+                        <Label text="• At least 6 characters" 
+                               style="-fx-text-fill: #64748b; -fx-font-size: 11px;"/>
+                        <Label text="• Must match confirmation" 
+                               style="-fx-text-fill: #64748b; -fx-font-size: 11px;"/>
+                    </VBox>
+                    
+                    <Label fx:id="passwordMessageLabel" visible="false" managed="false"
+                           style="-fx-font-size: 12px;"/>
+                    
+                    <Button text="Change Password" styleClass="button, button-primary" 
+                            onAction="#handleChangePassword" prefWidth="140"/>
+                </VBox>
+            </VBox>
+        </Tab>
+    </TabPane>
+</VBox>

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hospital.controller.DoctorController"
+      spacing="20" styleClass="content-area">
+    
+    <!-- Header -->
+    <HBox styleClass="toolbar" alignment="CENTER_LEFT" spacing="15">
+        <Label text="Doctor Management" styleClass="toolbar-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField" promptText="Search doctors..." 
+                   styleClass="search-box" prefWidth="250"
+                   onKeyReleased="#handleSearch"/>
+        <Button text="Export CSV" styleClass="button, button-secondary" onAction="#exportToCSV"/>
+    </HBox>
+    
+    <!-- Form and Table -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <!-- Form Panel -->
+        <VBox styleClass="form-panel" prefWidth="380" spacing="15">
+            <Label text="Doctor Details" styleClass="section-header"/>
+            
+            <GridPane vgap="10" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="110"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <!-- Doctor ID -->
+                <Label text="Doctor ID:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="doctorIdField" editable="false" promptText="Auto-generated"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <!-- Full Name -->
+                <Label text="Full Name:*" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <TextField fx:id="fullNameField" promptText="Enter full name"
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+                
+                <!-- Specialization -->
+                <Label text="Specialization:*" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="specializationField" promptText="Enter specialization"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                
+                <!-- Department -->
+                <Label text="Department:*" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="departmentCombo" promptText="Select department"
+                          GridPane.rowIndex="3" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                
+                <!-- Phone -->
+                <Label text="Phone:*" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="phoneField" promptText="Enter phone number"
+                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                
+                <!-- Email -->
+                <Label text="Email:*" styleClass="form-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <TextField fx:id="emailField" promptText="Enter email address"
+                           GridPane.rowIndex="5" GridPane.columnIndex="1"/>
+            </GridPane>
+            
+            <!-- Error Label -->
+            <Label fx:id="formErrorLabel" styleClass="error-message" visible="false" managed="false"/>
+            
+            <!-- Buttons -->
+            <HBox spacing="10">
+                <Button fx:id="addButton" text="Add" styleClass="button, button-success" 
+                        onAction="#handleAdd" prefWidth="80"/>
+                <Button fx:id="updateButton" text="Update" styleClass="button, button-primary" 
+                        onAction="#handleUpdate" prefWidth="80"/>
+                <Button fx:id="deleteButton" text="Delete" styleClass="button, button-danger" 
+                        onAction="#handleDelete" prefWidth="80"/>
+                <Button text="Clear" styleClass="button, button-secondary" 
+                        onAction="#handleClear" prefWidth="80"/>
+            </HBox>
+        </VBox>
+        
+        <!-- Table Panel -->
+        <VBox styleClass="form-panel" HBox.hgrow="ALWAYS" spacing="15">
+            <Label text="Doctor Records" styleClass="section-header"/>
+            <TableView fx:id="doctorTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="ID" fx:id="colDoctorId" prefWidth="70"/>
+                    <TableColumn text="Name" fx:id="colName" prefWidth="120"/>
+                    <TableColumn text="Specialization" fx:id="colSpecialization" prefWidth="120"/>
+                    <TableColumn text="Department" fx:id="colDepartment" prefWidth="100"/>
+                    <TableColumn text="Phone" fx:id="colPhone" prefWidth="100"/>
+                    <TableColumn text="Email" fx:id="colEmail" prefWidth="150"/>
+                </columns>
+            </TableView>
+            <Label fx:id="recordCountLabel" text="Total: 0 records" 
+                   style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+        </VBox>
+    </HBox>
+</VBox>

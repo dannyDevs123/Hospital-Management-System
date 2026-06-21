@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hospital.controller.MainDashboardController"
+            stylesheets="@../css/style.css"
+            prefWidth="1200" prefHeight="800">
+    
+    <left>
+        <VBox styleClass="sidebar" spacing="5">
+            <VBox styleClass="sidebar-header" alignment="CENTER" spacing="5">
+                <padding>
+                    <Insets top="20" right="15" bottom="20" left="15"/>
+                </padding>
+                <Label text="MediCare" styleClass="sidebar-title">
+                    <font>
+                        <Font name="System Bold" size="20"/>
+                    </font>
+                </Label>
+                <Label text="Hospital Management" styleClass="sidebar-subtitle"/>
+            </VBox>
+            
+            <VBox spacing="2" VBox.vgrow="ALWAYS">
+                <padding>
+                    <Insets top="15" right="10" bottom="15" left="10"/>
+                </padding>
+                
+                <Button fx:id="btnDashboard" text="Dashboard" maxWidth="Infinity" onAction="#showDashboard" userData="dashboard">
+                    <styleClass>
+                        <String fx:value="sidebar-button" />
+                        <String fx:value="active" />
+                    </styleClass>
+                </Button>
+                <Button fx:id="btnPatients" text="Patients" styleClass="sidebar-button" 
+                        maxWidth="Infinity" onAction="#showPatients" userData="patients"/>
+                <Button fx:id="btnDoctors" text="Doctors" styleClass="sidebar-button" 
+                        maxWidth="Infinity" onAction="#showDoctors" userData="doctors"/>
+                <Button fx:id="btnAppointments" text="Appointments" styleClass="sidebar-button" 
+                        maxWidth="Infinity" onAction="#showAppointments" userData="appointments"/>
+                <Button fx:id="btnBilling" text="Billing" styleClass="sidebar-button" 
+                        maxWidth="Infinity" onAction="#showBilling" userData="billing"/>
+                <Button fx:id="btnReports" text="Reports" styleClass="sidebar-button" 
+                        maxWidth="Infinity" onAction="#showReports" userData="reports"/>
+                <Button fx:id="btnSettings" text="Settings" styleClass="sidebar-button" 
+                        maxWidth="Infinity" onAction="#showSettings" userData="settings"/>
+            </VBox>
+            
+            <VBox>
+                <padding>
+                    <Insets top="10" right="10" bottom="20" left="10"/>
+                </padding>
+                <Button fx:id="btnLogout" text="Logout" styleClass="sidebar-logout-button" 
+                        maxWidth="Infinity" onAction="#handleLogout"/>
+            </VBox>
+        </VBox>
+    </left>
+    
+    <center>
+        <StackPane fx:id="contentArea" styleClass="main-content">
+            <ScrollPane fx:id="dashboardView" fitToWidth="true" styleClass="scroll-pane">
+                <VBox spacing="20" styleClass="content-area">
+                    <HBox styleClass="toolbar" alignment="CENTER_LEFT" spacing="15">
+                        <Label text="Dashboard" styleClass="toolbar-title"/>
+                        <Region HBox.hgrow="ALWAYS"/>
+                        <Label fx:id="dateLabel" text="" style="-fx-text-fill: #64748b; -fx-font-size: 13px;"/>
+                    </HBox>
+                    
+                    <HBox spacing="15">
+                        <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS" spacing="10">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <VBox>
+                                    <styleClass>
+                                        <String fx:value="card-icon-container" />
+                                        <String fx:value="card-icon-blue" />
+                                    </styleClass>
+                                    <Label text="👤" style="-fx-font-size: 20px;"/>
+                                </VBox>
+                                <VBox spacing="4">
+                                    <Label text="Total Patients" styleClass="card-title"/>
+                                    <Label fx:id="totalPatientsLabel" text="0" styleClass="card-value"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                        
+                        <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS" spacing="10">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <VBox>
+                                    <styleClass>
+                                        <String fx:value="card-icon-container" />
+                                        <String fx:value="card-icon-green" />
+                                    </styleClass>
+                                    <Label text="⚕" style="-fx-font-size: 20px;"/>
+                                </VBox>
+                                <VBox spacing="4">
+                                    <Label text="Total Doctors" styleClass="card-title"/>
+                                    <Label fx:id="totalDoctorsLabel" text="0" styleClass="card-value"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                        
+                        <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS" spacing="10">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <VBox>
+                                    <styleClass>
+                                        <String fx:value="card-icon-container" />
+                                        <String fx:value="card-icon-orange" />
+                                    </styleClass>
+                                    <Label text="📅" style="-fx-font-size: 20px;"/>
+                                </VBox>
+                                <VBox spacing="4">
+                                    <Label text="Appointments Today" styleClass="card-title"/>
+                                    <Label fx:id="todayAppointmentsLabel" text="0" styleClass="card-value"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                        
+                        <VBox styleClass="dashboard-card" HBox.hgrow="ALWAYS" spacing="10">
+                            <HBox alignment="CENTER_LEFT" spacing="10">
+                                <VBox>
+                                    <styleClass>
+                                        <String fx:value="card-icon-container" />
+                                        <String fx:value="card-icon-purple" />
+                                    </styleClass>
+                                    <Label text="💰" style="-fx-font-size: 20px;"/>
+                                </VBox>
+                                <VBox spacing="4">
+                                    <Label text="Total Revenue" styleClass="card-title"/>
+                                    <Label fx:id="totalRevenueLabel" text="0.00" styleClass="card-value"/>
+                                </VBox>
+                            </HBox>
+                        </VBox>
+                    </HBox>
+                    
+                    <HBox spacing="15" VBox.vgrow="ALWAYS">
+                        <VBox styleClass="chart-container" HBox.hgrow="ALWAYS" spacing="15">
+                            <Label text="Monthly Patient Registrations" styleClass="chart-title"/>
+                            <StackPane fx:id="barChartContainer" prefHeight="300" VBox.vgrow="ALWAYS" />
+                        </VBox>
+                        
+                        <VBox styleClass="chart-container" HBox.hgrow="ALWAYS" spacing="15">
+                            <Label text="Revenue Trend" styleClass="chart-title"/>
+                            <StackPane fx:id="lineChartContainer" prefHeight="300" VBox.vgrow="ALWAYS" />
+                        </VBox>
+                    </HBox>
+                    
+                    <HBox spacing="15">
+                        <VBox styleClass="notification-panel" HBox.hgrow="ALWAYS" spacing="15">
+                            <Label text="Upcoming Appointments" styleClass="section-header"/>
+                            <TableView fx:id="upcomingAppointmentsTable" prefHeight="200">
+                                <columns>
+                                    <TableColumn text="Patient" fx:id="colUpPatient" prefWidth="120"/>
+                                    <TableColumn text="Doctor" fx:id="colUpDoctor" prefWidth="120"/>
+                                    <TableColumn text="Date" fx:id="colUpDate" prefWidth="100"/>
+                                    <TableColumn text="Time" fx:id="colUpTime" prefWidth="80"/>
+                                    <TableColumn text="Status" fx:id="colUpStatus" prefWidth="100"/>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                        
+                        <VBox styleClass="notification-panel" HBox.hgrow="ALWAYS" spacing="15">
+                            <Label text="System Information" styleClass="section-header"/>
+                            <VBox fx:id="systemInfoBox" spacing="10">
+                                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="notification-item">
+                                    <Label text="✓" style="-fx-text-fill: #10b981; -fx-font-size: 16px;"/>
+                                    <VBox>
+                                        <Label text="System Status" styleClass="notification-title"/>
+                                        <Label text="All systems operational" styleClass="notification-time"/>
+                                    </VBox>
+                                </HBox>
+                                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="notification-item">
+                                    <Label text="💾" style="-fx-font-size: 16px;"/>
+                                    <VBox>
+                                        <Label text="Database" styleClass="notification-title"/>
+                                        <Label fx:id="dbStatusLabel" text="Connected (H2 Embedded)" styleClass="notification-time"/>
+                                    </VBox>
+                                </HBox>
+                                <HBox spacing="10" alignment="CENTER_LEFT" styleClass="notification-item">
+                                    <Label text="📊" style="-fx-font-size: 16px;"/>
+                                    <VBox>
+                                        <Label text="Version" styleClass="notification-title"/>
+                                        <Label text="MediCare HMS v1.0.0" styleClass="notification-time"/>
+                                    </VBox>
+                                </HBox>
+                            </VBox>
+                        </VBox>
+                    </HBox>
+                </VBox>
+            </ScrollPane>
+        </StackPane>
+    </center>
+</BorderPane>

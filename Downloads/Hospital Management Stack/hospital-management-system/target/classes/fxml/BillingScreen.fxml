@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hospital.controller.BillingController"
+      spacing="20" styleClass="content-area">
+    
+    <!-- Header -->
+    <HBox styleClass="toolbar" alignment="CENTER_LEFT" spacing="15">
+        <Label text="Billing &amp; Invoicing" styleClass="toolbar-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Export CSV" styleClass="button, button-secondary" onAction="#exportToCSV"/>
+    </HBox>
+    
+    <!-- Form and Table -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <!-- Form Panel -->
+        <VBox styleClass="form-panel" prefWidth="400" spacing="15">
+            <Label text="Generate Bill" styleClass="section-header"/>
+            
+            <GridPane vgap="10" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="130"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <!-- Bill Number -->
+                <Label text="Bill Number:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="billNumberField" editable="false" promptText="Auto-generated"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <!-- Patient -->
+                <Label text="Patient:*" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="patientCombo" promptText="Select patient"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                
+                <!-- Consultation Fee -->
+                <Label text="Consultation Fee:*" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <TextField fx:id="consultationFeeField" promptText="0.00"
+                           GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+                
+                <!-- Medicine Fee -->
+                <Label text="Medicine Fee:*" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <TextField fx:id="medicineFeeField" promptText="0.00"
+                           GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+                
+                <!-- Service Charge -->
+                <Label text="Service Charge:*" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="serviceChargeField" promptText="0.00"
+                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                
+                <!-- Separator -->
+                <Separator GridPane.rowIndex="5" GridPane.columnIndex="0" GridPane.columnSpan="2"/>
+                
+                <!-- Tax -->
+                <Label text="Tax (10%):" styleClass="form-label" GridPane.rowIndex="6" GridPane.columnIndex="0"/>
+                <TextField fx:id="taxField" editable="false" promptText="0.00"
+                           GridPane.rowIndex="6" GridPane.columnIndex="1"/>
+                
+                <!-- Total -->
+                <Label text="Total Amount:" styleClass="form-label" GridPane.rowIndex="7" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px;"/>
+                <TextField fx:id="totalField" editable="false" promptText="0.00"
+                           GridPane.rowIndex="7" GridPane.columnIndex="1"
+                           style="-fx-font-weight: bold; -fx-font-size: 14px;"/>
+            </GridPane>
+            
+            <!-- Error Label -->
+            <Label fx:id="formErrorLabel" styleClass="error-message" visible="false" managed="false"/>
+            
+            <!-- Buttons -->
+            <HBox spacing="10">
+                <Button text="Calculate" styleClass="button, button-primary" 
+                        onAction="#handleCalculate" prefWidth="90"/>
+                <Button text="Generate" styleClass="button, button-success" 
+                        onAction="#handleGenerate" prefWidth="90"/>
+                <Button text="Print" styleClass="button, button-secondary" 
+                        onAction="#handlePrint" prefWidth="70"/>
+                <Button text="Clear" styleClass="button, button-secondary" 
+                        onAction="#handleClear" prefWidth="70"/>
+            </HBox>
+            
+            <!-- Quick Info -->
+            <VBox style="-fx-background-color: #f8fafc; -fx-background-radius: 8px; -fx-padding: 12px;" spacing="5">
+                <Label text="Quick Calculation Guide" 
+                       style="-fx-font-weight: bold; -fx-text-fill: #475569; -fx-font-size: 12px;"/>
+                <Label text="• Total = Consultation + Medicine + Service Charge" 
+                       style="-fx-text-fill: #64748b; -fx-font-size: 11px;"/>
+                <Label text="• Tax = 10% of subtotal" 
+                       style="-fx-text-fill: #64748b; -fx-font-size: 11px;"/>
+                <Label text="• Final Total = Subtotal + Tax" 
+                       style="-fx-text-fill: #64748b; -fx-font-size: 11px;"/>
+            </VBox>
+        </VBox>
+        
+        <!-- Table Panel -->
+        <VBox styleClass="form-panel" HBox.hgrow="ALWAYS" spacing="15">
+            <Label text="Bill Records" styleClass="section-header"/>
+            <TableView fx:id="billTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="Bill #" fx:id="colBillNumber" prefWidth="110"/>
+                    <TableColumn text="Patient" fx:id="colBillPatient" prefWidth="120"/>
+                    <TableColumn text="Consultation" fx:id="colConsultation" prefWidth="90"/>
+                    <TableColumn text="Medicine" fx:id="colMedicine" prefWidth="80"/>
+                    <TableColumn text="Service" fx:id="colService" prefWidth="70"/>
+                    <TableColumn text="Tax" fx:id="colTax" prefWidth="70"/>
+                    <TableColumn text="Total" fx:id="colTotal" prefWidth="90"/>
+                    <TableColumn text="Date" fx:id="colBillDate" prefWidth="100"/>
+                </columns>
+            </TableView>
+            <Label fx:id="recordCountLabel" text="Total: 0 records" 
+                   style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+        </VBox>
+    </HBox>
+</VBox>

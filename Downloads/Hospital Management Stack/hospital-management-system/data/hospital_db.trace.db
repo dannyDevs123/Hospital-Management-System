@@ -1,0 +1,168 @@
+2026-06-20 07:07:49.070415+08:00 database: flush
+org.h2.message.DbException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/USER/Downloads/Hospital Management Stack/hospital-management-system/data/hospital_db.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.get(DbException.java:212)
+	at org.h2.message.DbException.convert(DbException.java:407)
+	at org.h2.mvstore.db.Store.lambda$new$0(Store.java:122)
+	at org.h2.mvstore.MVStore.handleException(MVStore.java:1546)
+	at org.h2.mvstore.MVStore.panic(MVStore.java:371)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:291)
+	at org.h2.mvstore.MVStore$Builder.open(MVStore.java:2035)
+	at org.h2.mvstore.db.Store.<init>(Store.java:133)
+	at org.h2.engine.Database.<init>(Database.java:326)
+	at org.h2.engine.Engine.openSession(Engine.java:92)
+	at org.h2.engine.Engine.openSession(Engine.java:222)
+	at org.h2.engine.Engine.createSession(Engine.java:201)
+	at org.h2.engine.SessionRemote.connectEmbeddedOrServer(SessionRemote.java:343)
+	at org.h2.jdbc.JdbcConnection.<init>(JdbcConnection.java:125)
+	at org.h2.Driver.connect(Driver.java:59)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:683)
+	at java.sql/java.sql.DriverManager.getConnection(DriverManager.java:230)
+	at com.hospital@1.0.0/com.hospital.util.DatabaseManager.getConnection(DatabaseManager.java:43)
+	at com.hospital@1.0.0/com.hospital.util.DatabaseManager.initializeDatabase(DatabaseManager.java:52)
+	at com.hospital@1.0.0/com.hospital.util.DatabaseManager.<init>(DatabaseManager.java:24)
+	at com.hospital@1.0.0/com.hospital.util.DatabaseManager.getInstance(DatabaseManager.java:33)
+	at com.hospital@1.0.0/com.hospital.controller.SplashScreenController.loadSystem(SplashScreenController.java:44)
+	at java.base/java.lang.Thread.run(Thread.java:1583)
+Caused by: org.h2.jdbc.JdbcSQLNonTransientException: General error: "org.h2.mvstore.MVStoreException: The file is locked: C:/Users/USER/Downloads/Hospital Management Stack/hospital-management-system/data/hospital_db.mv.db [2.2.224/7]" [50000-224]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:566)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
+	... 23 more
+Caused by: org.h2.mvstore.MVStoreException: The file is locked: C:/Users/USER/Downloads/Hospital Management Stack/hospital-management-system/data/hospital_db.mv.db [2.2.224/7]
+	at org.h2.mvstore.DataUtils.newMVStoreException(DataUtils.java:996)
+	at org.h2.mvstore.SingleFileStore.lockFileChannel(SingleFileStore.java:143)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:117)
+	at org.h2.mvstore.SingleFileStore.open(SingleFileStore.java:81)
+	at org.h2.mvstore.MVStore.<init>(MVStore.java:286)
+	... 17 more
+2026-06-20 22:18:01.369467+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 22:18:01.380645+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 22:18:43.491908+08:00 jdbc[28]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 22:18:43.497280+08:00 jdbc[29]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 22:19:37.167498+08:00 jdbc[38]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 22:19:37.172133+08:00 jdbc[39]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 22:51:14.379243+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 22:51:14.393206+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:07:29.859435+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:07:29.873397+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:10:56.050979+08:00 jdbc[37]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:10:56.055965+08:00 jdbc[38]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:11:24.116676+08:00 jdbc[55]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:11:24.121811+08:00 jdbc[56]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:11:36.483633+08:00 jdbc[73]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:11:36.486637+08:00 jdbc[74]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:12:18.029850+08:00 jdbc[86]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:12:18.033839+08:00 jdbc[87]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:12:32.385678+08:00 jdbc[97]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:12:32.388840+08:00 jdbc[98]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:13:18.343078+08:00 jdbc[112]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:13:18.347598+08:00 jdbc[113]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:30:51.667752+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:30:51.680908+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:36:29.535174+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:36:29.547299+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:49:57.320785+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:49:57.331532+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:52:14.987781+08:00 jdbc[34]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-20 23:52:14.993765+08:00 jdbc[35]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 00:06:07.654625+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 00:06:07.668587+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 00:07:10.926172+08:00 jdbc[25]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 00:07:10.932157+08:00 jdbc[26]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 01:54:25.684539+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 01:54:25.694998+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 02:47:29.493294+08:00 jdbc[10]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 02:47:29.509348+08:00 jdbc[11]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 20:25:59.494559+08:00 jdbc[45]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 20:25:59.836752+08:00 jdbc[46]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 20:26:00.358949+08:00 jdbc[53]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 20:26:01.614821+08:00 jdbc[54]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 20:26:26.258017+08:00 jdbc[71]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as [*]month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(appointment_date, 'yyyy-MM') as month, COUNT(*) as count FROM appointments WHERE appointment_date >= ? GROUP BY FORMATDATETIME(appointment_date, 'yyyy-MM') ORDER BY month [42001-224]
+2026-06-21 20:26:26.265092+08:00 jdbc[72]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as [*]month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month"; expected "identifier"; SQL statement:
+SELECT FORMATDATETIME(bill_date, 'yyyy-MM') as month, COALESCE(SUM(total_amount), 0) as revenue FROM bills WHERE bill_date >= ? GROUP BY FORMATDATETIME(bill_date, 'yyyy-MM') ORDER BY month [42001-224]

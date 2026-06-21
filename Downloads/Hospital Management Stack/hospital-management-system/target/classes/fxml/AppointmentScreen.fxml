@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.hospital.controller.AppointmentController"
+      spacing="20" styleClass="content-area">
+    
+    <!-- Header -->
+    <HBox styleClass="toolbar" alignment="CENTER_LEFT" spacing="15">
+        <Label text="Appointment Management" styleClass="toolbar-title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <TextField fx:id="searchField" promptText="Search appointments..." 
+                   styleClass="search-box" prefWidth="250"
+                   onKeyReleased="#handleSearch"/>
+        <Button text="Export CSV" styleClass="button, button-secondary" onAction="#exportToCSV"/>
+    </HBox>
+    
+    <!-- Form and Table -->
+    <HBox spacing="20" VBox.vgrow="ALWAYS">
+        <!-- Form Panel -->
+        <VBox styleClass="form-panel" prefWidth="380" spacing="15">
+            <Label text="Appointment Details" styleClass="section-header"/>
+            
+            <GridPane vgap="10" hgap="10">
+                <columnConstraints>
+                    <ColumnConstraints prefWidth="110"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+                
+                <!-- ID (hidden when 0) -->
+                <Label text="ID:" styleClass="form-label" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                <TextField fx:id="idField" editable="false" promptText="New"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+                
+                <!-- Patient Selection -->
+                <Label text="Patient:*" styleClass="form-label" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="patientCombo" promptText="Select patient"
+                          GridPane.rowIndex="1" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                
+                <!-- Doctor Selection -->
+                <Label text="Doctor:*" styleClass="form-label" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="doctorCombo" promptText="Select doctor"
+                          GridPane.rowIndex="2" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                
+                <!-- Date -->
+                <Label text="Date:*" styleClass="form-label" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                <DatePicker fx:id="datePicker" promptText="Select date"
+                            GridPane.rowIndex="3" GridPane.columnIndex="1" maxWidth="Infinity"/>
+                
+                <!-- Time -->
+                <Label text="Time:*" styleClass="form-label" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                <TextField fx:id="timeField" promptText="HH:mm (e.g., 09:30)"
+                           GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                
+                <!-- Status -->
+                <Label text="Status:*" styleClass="form-label" GridPane.rowIndex="5" GridPane.columnIndex="0"/>
+                <ComboBox fx:id="statusCombo" promptText="Select status"
+                          GridPane.rowIndex="5" GridPane.columnIndex="1" maxWidth="Infinity"/>
+            </GridPane>
+            
+            <!-- Status Legend -->
+            <HBox spacing="8">
+                <Label text="● Scheduled" styleClass="status-scheduled"/>
+                <Label text="● Completed" styleClass="status-completed"/>
+                <Label text="● Cancelled" styleClass="status-cancelled"/>
+                <Label text="● No-Show" styleClass="status-no-show"/>
+            </HBox>
+            
+            <!-- Error Label -->
+            <Label fx:id="formErrorLabel" styleClass="error-message" visible="false" managed="false"/>
+            
+            <!-- Buttons -->
+            <HBox spacing="10">
+                <Button fx:id="bookButton" text="Book" styleClass="button, button-success" 
+                        onAction="#handleBook" prefWidth="80"/>
+                <Button fx:id="updateButton" text="Update" styleClass="button, button-primary" 
+                        onAction="#handleUpdate" prefWidth="80"/>
+                <Button fx:id="cancelButton" text="Cancel" styleClass="button, button-danger" 
+                        onAction="#handleCancel" prefWidth="80"/>
+                <Button text="Clear" styleClass="button, button-secondary" 
+                        onAction="#handleClear" prefWidth="80"/>
+            </HBox>
+        </VBox>
+        
+        <!-- Table Panel -->
+        <VBox styleClass="form-panel" HBox.hgrow="ALWAYS" spacing="15">
+            <Label text="Appointments" styleClass="section-header"/>
+            <TableView fx:id="appointmentTable" VBox.vgrow="ALWAYS">
+                <columns>
+                    <TableColumn text="ID" fx:id="colId" prefWidth="50"/>
+                    <TableColumn text="Patient" fx:id="colPatient" prefWidth="120"/>
+                    <TableColumn text="Doctor" fx:id="colDoctor" prefWidth="120"/>
+                    <TableColumn text="Date" fx:id="colDate" prefWidth="90"/>
+                    <TableColumn text="Time" fx:id="colTime" prefWidth="70"/>
+                    <TableColumn text="Status" fx:id="colStatus" prefWidth="100"/>
+                </columns>
+            </TableView>
+            <Label fx:id="recordCountLabel" text="Total: 0 records" 
+                   style="-fx-text-fill: #64748b; -fx-font-size: 12px;"/>
+        </VBox>
+    </HBox>
+</VBox>

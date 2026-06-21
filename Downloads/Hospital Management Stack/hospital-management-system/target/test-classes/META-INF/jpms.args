@@ -1,0 +1,4 @@
+--patch-module
+com.hospital=_
+--add-reads
+com.hospital=ALL-UNNAMED
